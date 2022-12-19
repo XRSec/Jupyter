@@ -10,7 +10,7 @@ jobs:
     steps:
       - 
         name: Private Actions Checkout
-        uses: actions/checkout@v2.3.4
+        uses: actions/checkout@v5
         with:
           persist-credentials: false
           fetch-depth: 0
@@ -30,7 +30,7 @@ jobs:
           git commit -m "Add changes by Jupyter_Update_Action" -a
       - 
         name: Push changes
-        uses: ad-m/github-push-action@master
+        uses: ad-m/github-push-action@v0.8.0
         with:
           github_token: ${{ secrets.TOKEN_GITHUB }}
           branch: ${{ github.ref }}
@@ -41,7 +41,7 @@ jobs:
     steps:
       - 
         name: Repository Dispatch
-        uses: peter-evans/repository-dispatch@v1
+        uses: peter-evans/repository-dispatch@v3
         with:
           token: ${{ secrets.TOKEN_GITHUB }}
           event-type: Jupyter_Update_Action
